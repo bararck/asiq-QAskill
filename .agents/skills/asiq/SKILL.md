@@ -1,7 +1,7 @@
 ---
 name: asiq
 description: "Gunakan untuk QA, regresi, eksplorasi, dan rilis."
-version: 0.2.0
+version: 0.3.0
 ---
 
 # ASIQ — QA berbasis bukti
@@ -22,7 +22,7 @@ Gunakan untuk menemukan kebutuhan, menyusun skenario, eksplorasi manual, meranca
 ## Alur kerja dan keluaran wajib
 
 1. **Tetapkan mandat.** Catat tujuan, pemilik keputusan, target/lingkungan, scope termasuk pengecualian, otorisasi tindakan, data aman, dan batas penghentian. Jika izin belum jelas, lanjutkan hanya analisis read-only yang aman. Selesai ketika batas dapat diuji tanpa menafsirkan izin implisit.
-2. **Temukan stack aktual.** Baca manifest, konfigurasi CI, kontrak API, entry point, dan skrip test yang relevan dalam scope. Catat path dan revisi yang diperiksa. Bedakan tool yang dideklarasikan dari yang tersedia/teruji; jangan menebak framework, command, endpoint, atau versi. Dependensi yang tidak tersedia menjadi blocker terkait, bukan alasan memasang global atau mengunduh tanpa persetujuan.
+2. **Temukan stack dan flow aktual.** Baca manifest/lockfile, konfigurasi CI, kontrak API/event, entry point, pemanggil dan consumer dalam scope. Untuk perubahan lintas modul/repo atau review desain/logic, ikuti [review dependency dan flow](references/dependency-flow-review.md), lalu isi [matriks flow](templates/dependency-flow.md). Cocokkan requirement/desain yang disetujui dengan producer–consumer, state transition dan side effect pada revisi masing-masing. Baca repo dependency hanya jika tersedia dan diizinkan; yang tidak tersedia menjadi gap eksplisit, bukan implementasi tebakan. Bedakan deklarasi dari pemakaian aktual, versi resolved dari deployed, review visual dari logic, dan review statis dari integrasi teruji. Jangan install/clone atau mengakses layanan baru tanpa izin.
 3. **Bangun oracle.** Ikuti [penemuan kebutuhan](references/requirements-oracles.md). Petakan kebutuhan → sumber terverifikasi → risiko → skenario → bukti. Konflik atau ketiadaan oracle memblokir hanya keputusan/skenario yang bergantung padanya; teruskan scope independen yang aman.
 4. **Pilih jalur risiko.** Gunakan [eksplorasi manual](references/manual-risk.md), [regresi SDET dan CI](references/sdet-ci.md), [kinerja dan reliabilitas](references/performance-reliability.md), atau [keamanan dan privasi](references/security-evidence.md). Untuk state, rekonsiliasi, retry atau perubahan izin, baca [workflow stateful](references/stateful-workflows.md). Baca referensi jalur sebelum menjalankan aktivitasnya. Hasilnya daftar prioritas dengan alasan dan prasyarat yang dapat diverifikasi.
 5. **Rencanakan dan eksekusi terbatas.** Isi [skenario](templates/scenario.md); pisahkan rancangan dari eksekusi. Gunakan perintah dari stack yang ditemukan, tinjau side effect setup/teardown, lalu jalankan hanya dalam izin. Simpan waktu, revisi, lingkungan, perintah, exit code, output tersanitasi, serta actual vs expected. Hentikan pada batas keselamatan atau perubahan target.

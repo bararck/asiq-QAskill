@@ -28,8 +28,11 @@ REQUIRED = (
     "tests/test_stateful_workflow.py", "benchmarks/README.md",
     "docs/company-pilot.md", "CHANGELOG.md",
     ".agents/skills/asiq/references/stateful-workflows.md",
+    ".agents/skills/asiq/references/dependency-flow-review.md",
+    ".agents/skills/asiq/templates/dependency-flow.md",
+    "scripts/record_run.py", "tests/test_record_run.py", "docs/record-run.md",
 )
-EXPECTED_TESTS = 51
+EXPECTED_TESTS = 62
 MIT_TEXT = """MIT License
 
 Copyright (c) 2026 bararck
