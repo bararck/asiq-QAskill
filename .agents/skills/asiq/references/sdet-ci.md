@@ -18,3 +18,11 @@ Catat commit/build, environment, command, filter, jumlah ditemukan/dijalankan, s
 Simpan kegagalan percobaan pertama dan jumlah retry. Karantina flaky harus terlihat, terbatas waktunya, dan tidak dihitung sebagai cakupan hijau. Laporan CI harus mengikat artefak ke build yang diputuskan; badge hijau dari branch/build lain bukan bukti rilis ini. Jangan mengunggah environment dump, token, atau raw data pengguna ke artefak.
 
 Selesai ketika test yang disepakati benar-benar berjalan, jumlah/status direkonsiliasi, dan keputusan atas gap tercatat. Menguji verifier paket skill hanya memvalidasi paket, bukan sistem pengguna.
+
+## Inventory dan evidence ledger
+
+Bekukan daftar ID resmi secara independen sebelum eksekusi, beserta kebutuhan, risiko, oracle dan pilihan regresi. Cocokkan ledger terhadap baseline tersebut, bukan hanya angka total: test berbeda dengan jumlah sama tetap perubahan coverage. Varian tetap dapat ditelusuri ke skenario canonical. Item tidak dipilih tetap terlihat NOT_RUN dengan alasan; skip baru atau ID hilang tidak boleh memperoleh clean gate.
+
+Catat konteks per attempt: source revision/hash, build, environment, konfigurasi/data, command/filter, waktu dan zona, status, exit code, actual, artifact tersanitasi dan hash. Jangan menyatukan log dari build berbeda sebagai bukti satu build. Perbaikan yang mengubah source membutuhkan konteks baru dan tautan eksplisit ke kegagalan sebelumnya. Lindungi baseline dan bukti pada CI/access control yang dikelola tim; hash tanpa trust anchor hanya mendeteksi perbedaan byte.
+
+Untuk state, fixture, replay, izin berubah dan hasil provider ambigu, gunakan [workflow stateful](stateful-workflows.md). Pisahkan diagnosis produk dari fixture/infrastruktur, dan hasil mock dari integrasi nyata. Tooling ledger opsional tersedia pada paket ASIQ penuh; jangan menganggap salinan skill menyertakannya atau memasangnya ke repo konsumen otomatis.

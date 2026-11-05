@@ -4,6 +4,8 @@
 - Scope, lingkungan, build/revisi, konfigurasi:
 - Oracle expected, sumber/revisi, otoritas, status verifikasi:
 - Dependency, prasyarat, data sintetis, peran:
+- ID canonical/varian, ID baseline, selected/tidak dipilih beserta alasan:
+- ID fixture/run, snapshot awal, lineage data dan identitas resource cleanup:
 - Izin tindakan (pemberi, target, batas, waktu), kondisi berhenti:
 - Jenis: rancangan / STATIC_REVIEW / eksekusi dinamis:
 
@@ -21,5 +23,7 @@
 - Asumsi / belum diketahui (bukan observasi):
 - Cleanup yang diizinkan dan verifikasi efeknya:
 - Bug terkait, blocker/pemilik, tindak lanjut:
+- Attempt pertama, tautan perbaikan/retest, perubahan konteks antar-attempt:
+- Artifact hash, source/build/data/config binding dan lokasi ledger:
 
 Jangan mengisi actual atau PASS sebelum eksekusi nyata dan pembandingan oracle terverifikasi.

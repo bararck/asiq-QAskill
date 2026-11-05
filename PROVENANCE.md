@@ -6,4 +6,6 @@ Lingkungan agen mewajibkan pemuatan panduan umum authoring skill sebagai instruk
 
 Tidak ada klaim kesetaraan fungsional dengan edisi lain. Tidak ada skor lama, inventory lama, atau hasil pengujian edisi lain yang diwariskan. Hasil verifier hanya berlaku untuk byte paket yang benar-benar diperiksa dan tidak menggantikan review manusia atau pengujian aplikasi.
 
+Pengembangan 0.2.0 menerima feedback pilot eksternal yang diberikan pengguna sebagai brief abstrak: traceability, inventory, konteks bukti, fixture isolation, perubahan izin dan outcome ambigu. Source/data aplikasi pilot tidak dibaca atau disalin untuk pengembangan tersebut. Tooling dan ilustrasi sintetis baru bukan reproduksi terverifikasi defect aplikasi pilot. Panduan proses distribusi/TDD yang dimuat agen bukan bukti independensi legal atau kepemilikan hak tambahan.
+
 Pemilik telah mengotorisasi publikasi edisi ini dengan lisensi [MIT](LICENSE) dan pemberitahuan copyright `2026 bararck`. Ini mencatat keputusan dan otorisasi pemilik, bukan verifikasi independen atas kepemilikan seluruh hak, audit legal, atau jaminan tidak adanya hak pihak lain. Ketentuan izin, kewajiban mempertahankan pemberitahuan, serta penyangkalan jaminan mengikuti LICENSE; batas klaim asal-usul dan kesetaraan di atas tetap berlaku.

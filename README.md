@@ -1,5 +1,7 @@
 # ASIQ — edisi publik baru
 
+Versi pengembangan 0.2.0. Perubahan lokal belum menjadi release publik sampai revisi tersebut diterbitkan dan CI-nya diverifikasi.
+
 Skill agen QA berbahasa Indonesia untuk kebutuhan, eksplorasi, regresi, CI, kinerja/reliabilitas, keamanan dan keputusan rilis berbasis bukti. Tidak mengunci domain bisnis atau framework. Mulai dari [SKILL.md](.agents/skills/asiq/SKILL.md).
 
 ## Status distribusi
@@ -31,3 +33,16 @@ CI: [workflow](.github/workflows/verify.yml) mendeklarasikan Windows/Linux dan P
 Berikan tujuan, sumber kebutuhan dalam scope, target/lingkungan, risiko, dan batas izin. Skill memulai secara read-only, menemukan stack aktual, memverifikasi oracle, lalu memilih jalur dan template. Tindakan aktif perlu persetujuan spesifik. Tidak ada PASS dari penilaian model atau eksekusi yang tidak terjadi. Keputusan rilis milik pemilik yang berwenang.
 
 Laporkan masalah keamanan melalui [SECURITY.md](SECURITY.md), bukan issue publik berisi rahasia.
+
+## Penggunaan tim
+
+Mulai dari [acceptance pilot company](docs/company-pilot.md). Konten skill memuat [workflow stateful](.agents/skills/asiq/references/stateful-workflows.md) untuk isolasi fixture, perubahan izin sepanjang lifecycle, acknowledgment ambigu, replay dan snapshot historis. Terapkan hanya pada kontrak/komponen yang benar-benar ada; bukan aturan khusus satu aplikasi.
+
+Pisahkan skill-only dari tooling paket penuh. Instalasi skill tidak mengubah runner/CI aplikasi dan tidak otomatis menegakkan proses. Integrasi tooling perlu review, pin revisi dan izin tersendiri; tidak ada klaim integrasi live, sertifikasi keamanan atau peningkatan efektivitas agen tanpa evaluasi nyata.
+
+- [Gate ledger dan bukti](docs/qa-gate.md): schema ketat, baseline ID, konteks attempt, hash artifact serta riwayat FAIL/retest. Semua gap tetap menahan clean gate.
+- [Lab stateful sintetis](labs/stateful_workflow/README.md): kontrak fixed dan negative control buggy; bukan aplikasi company.
+- [Protokol benchmark agen](benchmarks/README.md): evaluasi berpasangan masih NOT_RUN, bukan klaim efektivitas.
+- [Changelog](CHANGELOG.md): batas versi dan perubahan kandidat.
+
+Entrypoint `python -B scripts/verify.py` memeriksa paket, menjalankan suite wajib dan buggy negative control. Lab yang hilang menahan verifikasi; jumlah test wajib tidak boleh dikurangi untuk memperoleh hijau. Negative control harus menghasilkan kegagalan assertion yang diharapkan, bukan error setup. Penambahan ini tidak mengubah command aplikasi konsumen.

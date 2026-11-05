@@ -149,6 +149,15 @@ class PackageFixtures(unittest.TestCase):
 
 
 class GateFixtures(unittest.TestCase):
+    def test_negative_control_requires_real_failures_without_errors_or_skips(self):
+        result = unittest.TestResult()
+        result.testsRun = 9
+        self.assertFalse(verify.negative_is_expected(result))
+        result.failures = [(None, 'behavioral assertion')] * 8
+        self.assertTrue(verify.negative_is_expected(result))
+        result.errors = [(None, 'setup error')]
+        self.assertFalse(verify.negative_is_expected(result))
+
     def run_inner(self, case):
         suite = unittest.defaultTestLoader.loadTestsFromTestCase(case)
         return unittest.TextTestRunner(stream=io.StringIO()).run(suite)

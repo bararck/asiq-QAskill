@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import os
+import io
 import re
 import sys
 import unittest
@@ -22,8 +23,13 @@ REQUIRED = (
     ".agents/skills/asiq/templates/bug.md",
     ".agents/skills/asiq/templates/release-decision.md",
     "scripts/verify.py", "tests/test_verify.py", ".github/workflows/verify.yml",
+    "scripts/qa_gate.py", "tests/test_qa_gate.py", "docs/qa-gate.md",
+    "labs/stateful_workflow/workflow.py", "labs/stateful_workflow/README.md",
+    "tests/test_stateful_workflow.py", "benchmarks/README.md",
+    "docs/company-pilot.md", "CHANGELOG.md",
+    ".agents/skills/asiq/references/stateful-workflows.md",
 )
-EXPECTED_TESTS = 26
+EXPECTED_TESTS = 51
 MIT_TEXT = """MIT License
 
 Copyright (c) 2026 bararck
@@ -167,12 +173,38 @@ def result_is_clean(result: unittest.TestResult, expected: int) -> bool:
     )
 
 
+def negative_is_expected(result: unittest.TestResult) -> bool:
+    return (result.testsRun == 9 and len(result.failures) == 8
+            and not result.errors and not result.skipped
+            and not result.unexpectedSuccesses and not result.expectedFailures
+            and not result.shouldStop)
+
+
+def run_negative_control() -> bool:
+    previous = os.environ.get("ASIQ_LAB_IMPLEMENTATION")
+    sys.path.insert(0, str(ROOT))
+    try:
+        os.environ["ASIQ_LAB_IMPLEMENTATION"] = "buggy"
+        from labs.stateful_workflow.workflow import BuggyWorkflow
+        BuggyWorkflow.shared_jobs.clear()
+        suite = unittest.defaultTestLoader.discover(str(ROOT / "tests"), pattern="test_stateful_workflow.py")
+        result = unittest.TextTestRunner(stream=io.StringIO()).run(suite)
+        return negative_is_expected(result)
+    finally:
+        sys.path.pop(0)
+        if previous is None:
+            os.environ.pop("ASIQ_LAB_IMPLEMENTATION", None)
+        else:
+            os.environ["ASIQ_LAB_IMPLEMENTATION"] = previous
+
+
 def main() -> int:
     errors = validate_package(ROOT)
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
+    sys.path.insert(0, str(ROOT))
     suite = unittest.defaultTestLoader.discover(str(ROOT / "tests"), pattern="test_*.py")
     discovered = suite.countTestCases()
     if discovered != EXPECTED_TESTS:
@@ -182,7 +214,10 @@ def main() -> int:
     if not result_is_clean(result, EXPECTED_TESTS):
         print("ERROR: hasil unittest tidak bersih", file=sys.stderr)
         return 1
-    print(f"VERIFIED: struktur dan {result.testsRun} test; bukan hasil QA aplikasi.")
+    if not run_negative_control():
+        print("ERROR: negative control tidak menunjukkan kegagalan kontrak yang diharapkan", file=sys.stderr)
+        return 1
+    print(f"VERIFIED: struktur dan {result.testsRun} test; negative control 8 assertion failures; bukan hasil QA aplikasi.")
     return 0
 
 

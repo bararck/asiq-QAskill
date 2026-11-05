@@ -18,6 +18,9 @@
 - Skip, retry, discovery/infrastruktur error dan implikasinya:
 - Cakupan di luar scope dan alasan:
 - Bukti basi atau berbeda lingkungan; dampak terhadap keputusan:
+- Revisi/hash baseline inventory, ID hilang/tambahan dan skip baru:
+- Hasil gate ledger/bukti atau kontrol manual bila tool tidak tersedia:
+- Fixture/infrastruktur versus defect produk; integrasi mock/lokal/live yang terbukti:
 
 ## Dasar keputusan
 
