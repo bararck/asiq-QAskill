@@ -6,9 +6,9 @@
 - Rekomendasi QA: GO / NO_GO / CONDITIONAL / INSUFFICIENT_EVIDENCE
 - Keputusan pemilik: BELUM DIPUTUSKAN
 
-| Skenario/risiko | Status | Bukti + waktu/build | Gap / pemilik |
-| --- | --- | --- | --- |
-| <ID> | NOT_RUN | Belum ada | <isi> |
+| Skenario/risiko | Execution | Verdict | Cause / kepastian | Bukti + waktu/build | Gap / pemilik |
+| --- | --- | --- | --- | --- | --- |
+| <ID> | NOT_RUN | INCONCLUSIVE | NONE | Belum ada | <isi> |
 
 ## Rekonsiliasi
 
@@ -20,6 +20,8 @@
 - Bukti basi atau berbeda lingkungan; dampak terhadap keputusan:
 - Revisi/hash baseline inventory, ID hilang/tambahan dan skip baru:
 - Hasil gate ledger/bukti atau kontrol manual bila tool tidak tersedia:
+- Tier, budget dan alasan berhenti; gap yang masih menghalangi keputusan:
+- Mandat terdahulu yang digunakan kembali; perubahan scope yang membutuhkan izin baru:
 - Fixture/infrastruktur versus defect produk; integrasi mock/lokal/live yang terbukti:
 
 ## Dasar keputusan

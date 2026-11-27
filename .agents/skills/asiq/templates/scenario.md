@@ -1,5 +1,8 @@
 # Skenario <ID>: <tujuan>
 
+Tier 1 boleh memakai satu catatan ringkas dengan scope, oracle, actual/bukti+konteks, verdict dan gap. Template penuh ini untuk Tier 2/3 sesuai relevansi; tulis N/A beserta alasan, jangan membuat administrasi tanpa risiko.
+
+- Tier/mode dan alasan; perubahan → flow → risiko → skenario dipilih/tidak dipilih:
 - Kebutuhan/risiko dan prioritas beserta alasan:
 - Scope, lingkungan, build/revisi, konfigurasi:
 - Oracle expected, sumber/revisi, otoritas, status verifikasi:
@@ -17,6 +20,9 @@
 
 - Status awal: NOT_RUN
 - Status akhir: <NOT_RUN/BLOCKED/PASS/FAIL/INCONCLUSIVE; STATIC_REVIEW dicatat terpisah>
+- Execution: <NOT_RUN/BLOCKED/COMPLETED/ERROR>; verdict: <PASS/FAIL/INCONCLUSIVE>:
+- Cause dan kepastian diagnosis: <NONE/PRODUCT/INFRASTRUCTURE/TEST_DISCOVERY/ORACLE/DEPENDENCY/CONTEXT_DRIFT/LIMIT/UNKNOWN>:
+- Budget waktu/attempt; alasan selesai/berhenti dan sisa gap:
 - Waktu+zona, pelaksana/tool, command/filter, exit code:
 - Jumlah test ditemukan/dijalankan, retry/skip dan alasan:
 - Bukti tersanitasi beserta konteks dan masa relevansinya:

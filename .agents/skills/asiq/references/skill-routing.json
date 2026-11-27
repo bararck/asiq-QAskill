@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "routes": [
+    {"id": "risk", "purpose": "Prioritas risiko perubahan", "candidates": ["risk-based-testing"], "fallback": "Petakan dampak, kemungkinan dan skenario dari sumber yang disetujui."},
+    {"id": "project-context", "purpose": "Stack, command dan mandat yang sudah diketahui", "candidates": ["qa-project-context"], "fallback": "Baca manifest, CI dan percakapan; tanyakan hanya informasi yang belum tersedia."},
+    {"id": "code-impact", "purpose": "Call graph dan dependency kode", "candidates": ["codebase-memory"], "fallback": "Baca source dan cari caller/consumer terarah; nyatakan coverage yang belum diketahui."},
+    {"id": "corpus-graph", "purpose": "Relasi dokumen dan kode atau graph persisten", "candidates": ["graphify"], "fallback": "Pakai graph yang tersedia atau source terarah; jangan mengarang edge atau melakukan rebuild tanpa kebutuhan."},
+    {"id": "gstack-router", "purpose": "Routing suite gstack yang diminta pengguna", "candidates": ["gstack"], "fallback": "Gunakan routing ASIQ dan catat runtime gstack belum tersedia."},
+    {"id": "browser-report", "purpose": "QA browser tanpa perbaikan kode", "candidates": ["gstack-qa-only", "exploratory-testing"], "fallback": "Eksplorasi terbatas dengan browser yang tersedia; bila tidak tersedia, laporkan gap runtime."},
+    {"id": "browser-fix", "purpose": "QA browser dan perbaikan dalam mandat", "candidates": ["gstack-qa"], "fallback": "Gunakan alur reproduksi, TDD dan retest ASIQ; izin QA umum tidak otomatis mengizinkan fix."},
+    {"id": "browser-control", "purpose": "Inspeksi halaman dan screenshot", "candidates": ["gstack-browse", "addy-browser-testing-with-devtools"], "fallback": "Pakai tool browser yang didukung host; static review tidak menjadi hasil UI dinamis."},
+    {"id": "e2e", "purpose": "Automation browser yang dipelihara", "candidates": ["playwright-automation", "playwright-e2e-testing"], "fallback": "Gunakan runner dan pola test repo yang sudah ada; jangan memasang framework otomatis."},
+    {"id": "reproduce", "purpose": "Minimal reproducer defect", "candidates": ["bug-reproduction"], "fallback": "Reproduksi dan kecilkan kasus, simpan actual vs oracle dan konteks."},
+    {"id": "debug", "purpose": "Akar penyebab error", "candidates": ["addy-debugging-and-error-recovery", "gstack-investigate"], "fallback": "Simpan bukti, lokalisasi satu hipotesis, perbaikan minimum dan guard regresi."},
+    {"id": "tdd", "purpose": "Test gagal sebelum implementasi perilaku", "candidates": ["test-driven-development", "addy-test-driven-development", "tdd"], "fallback": "RED assertion yang tepat, GREEN minimum, refactor dan verifikasi; setup error bukan RED perilaku."},
+    {"id": "generate-tests", "purpose": "Test baru dari requirement", "candidates": ["ai-test-generation"], "fallback": "Requirement, risiko, matriks, skenario dan oracle sebelum kode; review manusia sebelum merge."},
+    {"id": "review-tests", "purpose": "Kekuatan assertion dan pemeliharaan suite", "candidates": ["ai-qa-review"], "fallback": "Tinjau outcome, isolasi, boundary, negative, flakiness dan API/selector nyata."},
+    {"id": "review-code", "purpose": "Review diff dan konsekuensi logic", "candidates": ["gstack-review", "addy-code-review-and-quality"], "fallback": "Review diff terarah terhadap kontrak, caller dan consumer; temuan terikat source."},
+    {"id": "api", "purpose": "Perilaku endpoint REST/GraphQL", "candidates": ["api-testing"], "fallback": "Gunakan kontrak terverifikasi dan target yang sudah diotorisasi; jangan menciptakan endpoint."},
+    {"id": "contracts", "purpose": "Kompatibilitas producer dan consumer", "candidates": ["contract-testing"], "fallback": "Tinjau kontrak dua sisi; consumer tidak tersedia tetap gap integrasi."},
+    {"id": "reliability", "purpose": "Flakiness, locator dan karantina", "candidates": ["test-reliability"], "fallback": "Pertahankan attempt pertama; diagnosis dan retest terbatas, tanpa clean PASS dari retry saja."},
+    {"id": "test-data", "purpose": "Fixture sintetis dan isolasi data", "candidates": ["test-data-management"], "fallback": "Data terisolasi, seed/clock terkendali, cleanup hanya resource yang dibuat test."},
+    {"id": "accessibility", "purpose": "Keyboard, semantics dan assistive technology", "candidates": ["accessibility-testing", "addy-accessibility-engineering"], "fallback": "Uji keyboard/fokus/label yang relevan; otomatisasi saja tidak membuktikan seluruh WCAG."},
+    {"id": "visual", "purpose": "Regresi tampilan dan baseline", "candidates": ["visual-testing", "gstack-design-review"], "fallback": "Bandingkan viewport dan baseline yang direview; perubahan screenshot bukan oracle otomatis."},
+    {"id": "security", "purpose": "Auth, session dan negative path keamanan", "candidates": ["security-testing", "gstack-cso"], "fallback": "Analisis read-only dan skenario negatif dalam mandat; scan aktif membutuhkan scope yang sesuai."},
+    {"id": "performance", "purpose": "Budget performa dan profil beban", "candidates": ["performance-testing", "gstack-benchmark"], "fallback": "Tetapkan oracle/metrik/budget; jangan menjalankan load tanpa mandat dan batas penghentian."},
+    {"id": "ai-product", "purpose": "Kualitas fitur AI/LLM dan prompt injection", "candidates": ["ai-system-testing"], "fallback": "Dataset, oracle independen, event tool dan evaluasi ketidakpastian; test AI bukan generasi test biasa."},
+    {"id": "ci", "purpose": "Runner, discovery dan artifact gate", "candidates": ["ci-cd-integration", "addy-ci-cd-and-automation"], "fallback": "Nol test, skip dan error tetap terlihat; bukti terikat kandidat build."},
+    {"id": "release", "purpose": "Rekomendasi kesiapan rilis", "candidates": ["release-readiness"], "fallback": "Rekonsiliasi evidence/gap dan pemilik keputusan; tidak ada deploy atau GO otomatis."},
+    {"id": "report", "purpose": "Laporan QA yang menjaga fakta", "candidates": ["qa-report-humanizer", "humanizer"], "fallback": "Pertahankan angka, ID, severity, build dan ketidakpastian; tulis pemicu, dampak dan langkah berikut."}
+  ]
+}
