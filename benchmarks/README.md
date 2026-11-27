@@ -1,5 +1,13 @@
 # Controlled skill evaluation protocol — NOT_RUN
 
+ASIQ 0.4 adds a separate [public behavior conformance pack and review grader](behavior-evaluation.md).
+Its deterministic unit fixtures test the grader only. Neither those fixtures nor a
+static instruction review count as the paired agent experiment described below.
+
+A separate [actual instruction-comprehension smoke extract](results/instruction-smoke.json)
+is available for five public hypothetical cases. It is not blinded, paired, or an
+application-testing run; the paired effectiveness experiment below remains NOT_RUN.
+
 **Model/agent evaluation status: NOT_RUN.** No model jobs were launched, no model
 metrics collected, and no improvement or effectiveness claim is supported.
 The stateful lab's seeded-defect tests demonstrate local Python behavior, not whether

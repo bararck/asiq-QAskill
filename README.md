@@ -1,6 +1,6 @@
 # ASIQ — edisi publik baru
 
-Versi pengembangan 0.3.0. Perubahan lokal belum menjadi release publik sampai revisi tersebut diterbitkan dan CI-nya diverifikasi.
+Versi pengembangan 0.4.0. Perubahan lokal belum menjadi release publik sampai revisi tersebut diterbitkan dan CI-nya diverifikasi.
 
 Skill agen QA berbahasa Indonesia untuk kebutuhan, eksplorasi, regresi, CI, kinerja/reliabilitas, keamanan dan keputusan rilis berbasis bukti. Tidak mengunci domain bisnis atau framework. Mulai dari [SKILL.md](.agents/skills/asiq/SKILL.md).
 
@@ -30,7 +30,14 @@ CI: [workflow](.github/workflows/verify.yml) mendeklarasikan Windows/Linux dan P
 
 ## Penggunaan
 
-Berikan tujuan, sumber kebutuhan dalam scope, target/lingkungan, risiko, dan batas izin. Skill memulai secara read-only, menemukan stack aktual, memverifikasi oracle, lalu memilih jalur dan template. Tindakan aktif perlu persetujuan spesifik. Tidak ada PASS dari penilaian model atau eksekusi yang tidak terjadi. Keputusan rilis milik pemilik yang berwenang.
+Berikan tujuan, sumber kebutuhan dalam scope, target/lingkungan, risiko, dan batas izin. Skill memilih Tier 1/ringkas, Tier 2/standar atau Tier 3/mendalam sesuai dampak. Untuk Bolt, langsung pilih tier; nama platform tidak mengurangi risiko auth/data/state. Izin eksplisit yang masih berlaku digunakan kembali tanpa pertanyaan berulang. Tidak ada PASS dari penilaian model atau eksekusi yang tidak terjadi. Keputusan rilis milik pemilik yang berwenang.
+
+- [Mode kerja dan tier Bolt](.agents/skills/asiq/references/work-modes.md): artefak minimum, seleksi regresi, stopping rule dan execution/verdict/cause.
+- [Gabungan praktik senior](.agents/skills/asiq/references/senior-engineering.md): Superpowers TDD, Addy debugging/review, AI test generation/review, Humanizer dan QA Report Humanizer dipilih sesuai aktivitas; bukan dependensi wajib yang diinstal otomatis.
+- [Contoh terisi](.agents/skills/asiq/references/worked-examples.md): UI kecil, API lintas layanan, retry/stateful dan laporan infra. Seluruh hasil contoh sintetis.
+- [Evaluasi perilaku](benchmarks/behavior-evaluation.md): 10 kasus publik dan grader penilaian reviewer; evaluasi agen aktual masih NOT_RUN.
+- [Routing skill terpasang](.agents/skills/asiq/references/skill-routing.md): gstack, graphify, codebase-memory dan skill spesialis berdasarkan aktivitas; [audit lokal](docs/local-skill-audit.md) mencatat 27 route dan batas runtime. Jalankan `python -B scripts/skill_doctor.py` dari paket penuh untuk discovery ulang; hasil FOUND tidak berarti runner siap.
+- [Binding bukti evaluasi v2](docs/evaluation-evidence-v2.md): file/hash, konteks kasus/sesi/model serta snapshot skill; penilaian reviewer tetap perlu audit. [Review kesiapan](docs/readiness-review.md) memisahkan skor reviewer, smoke pemahaman dan efektivitas empiris.
 
 Laporkan masalah keamanan melalui [SECURITY.md](SECURITY.md), bukan issue publik berisi rahasia.
 

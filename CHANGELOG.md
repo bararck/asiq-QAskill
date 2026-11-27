@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.4.0 — kandidat lokal, belum diterbitkan
+
+- Diagnosis crash tanpa bukti memakai UNKNOWN; format penilaian v2 memeriksa hash/casepack/snapshot/event context tanpa mengklaim autentisitas log. Sembilan negative-control test baru untuk binding.
+- Doctor memiliki opt-in probe runtime terbatas, memilih Git Bash lokal pada Windows; enam test membedakan sukses, error, executable hilang, timeout dan keluaran salah tanpa retry. Browser gstack tetap perlu pemeriksaan terpisah.
+- Routing 27 aktivitas ke skill lokal termasuk gstack/graphify/codebase-memory, fallback dan pemisahan file skill dari runtime; doctor stdlib read-only dengan 10 test baru. Audit runtime lokal mencatat graphify CLI tersedia dan preamble gstack terhambat WSL tanpa distro.
+- Tier 1/ringkas, Tier 2/standar, Tier 3/mendalam termasuk pemilihan langsung untuk proyek Bolt; artefak wajib proporsional dan pemetaan risiko/regresi serta aturan berhenti.
+- Mandat eksplisit yang tetap berlaku digunakan kembali; pertanyaan hanya untuk informasi hilang, perluasan scope atau perubahan batas izin.
+- Laporan memisahkan execution, verdict dan cause; ledger gate v1 tetap kompatibel dengan status lamanya melalui laporan pendamping.
+- Praktik senior: TDD, debugging berbasis akar penyebab, generasi/review test serta humanisasi laporan tanpa perubahan fakta. Tiga contoh utama dan contoh infra seluruhnya sintetis.
+- Sepuluh kasus konformansi perilaku publik dan grader stdlib untuk penilaian reviewer; 11 test baru mempertahankan 62 test sebelumnya. Evaluasi agen aktual NOT_RUN, bukan klaim efektivitas atau hasil aplikasi.
+- Schema machine-readable ledger baru dan migrasinya tetap tindak lanjut P2; format review evaluasi v1 bukan pengganti ledger produk.
+
 ## 0.3.0 — kandidat lokal, belum diterbitkan
 
 - Review dependency lintas repo, producer/consumer pada revisi terpisah, pencocokan requirement/desain/logic dan template flow. Repository yang tidak tersedia tetap gap; bukan klaim review repo company.

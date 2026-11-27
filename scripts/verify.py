@@ -31,8 +31,19 @@ REQUIRED = (
     ".agents/skills/asiq/references/dependency-flow-review.md",
     ".agents/skills/asiq/templates/dependency-flow.md",
     "scripts/record_run.py", "tests/test_record_run.py", "docs/record-run.md",
+    ".agents/skills/asiq/references/work-modes.md",
+    ".agents/skills/asiq/references/senior-engineering.md",
+    ".agents/skills/asiq/references/worked-examples.md",
+    "benchmarks/behavior-cases.json", "benchmarks/behavior-evaluation.md",
+    "scripts/evaluate_behavior.py", "tests/test_behavior_eval.py",
+    ".agents/skills/asiq/references/skill-routing.md",
+    ".agents/skills/asiq/references/skill-routing.json",
+    "scripts/skill_doctor.py", "tests/test_skill_doctor.py", "docs/local-skill-audit.md",
+    "tests/test_eval_evidence.py", "tests/test_runtime_probe.py",
+    "docs/evaluation-evidence-v2.md", "docs/readiness-review.md",
+    "benchmarks/results/instruction-smoke.json",
 )
-EXPECTED_TESTS = 62
+EXPECTED_TESTS = 98
 MIT_TEXT = """MIT License
 
 Copyright (c) 2026 bararck

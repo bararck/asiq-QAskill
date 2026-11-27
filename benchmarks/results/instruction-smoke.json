@@ -1,0 +1,52 @@
+{
+  "format_version": 1,
+  "kind": "actual_instruction_comprehension_smoke",
+  "session_id": "01a21b18-cf68-7a71-9a73-4454089362f1",
+  "configured_model": "gpt-6.1-sol",
+  "model_metadata_warning": true,
+  "scope": "Read only ASIQ SKILL.md and work-modes.md; five hypothetical cases, no application tests",
+  "source": "Extracted from actual codex exec JSONL returned by execution tool; selected events only, private host diagnostics omitted",
+  "process_exit_code": 0,
+  "command_events": [
+    {
+      "id": "item_3",
+      "type": "command_execution",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "id": "item_5",
+      "type": "command_execution",
+      "exit_code": 0,
+      "status": "completed"
+    },
+    {
+      "id": "item_7",
+      "type": "command_execution",
+      "exit_code": 0,
+      "status": "completed"
+    }
+  ],
+  "final_event": {
+    "type": "item.completed",
+    "item": {
+      "id": "item_8",
+      "type": "agent_message",
+      "text": "**Instruction-comprehension smoke check only.** Read only the two specified files; no edits, browsing, installs, or product tests. Statuses below describe the hypothetical cases, not executions performed here.\n\n| Case | Execution / verdict / cause | Actions |\n|---|---|---|\n| Unexplained runner crash before assertions | `ERROR / INCONCLUSIVE / UNKNOWN` | Preserve sanitized crash evidence and execution context; investigate within mandate and budget. Use `INFRASTRUCTURE` only when supported by evidence. Do not infer a product failure. |\n| FAIL, then passing retry without code/config change | A1: `COMPLETED / FAIL / UNKNOWN` pending triage. A2: `COMPLETED / PASS / NONE` if evidence satisfies the verified oracle. Combined verdict: `INCONCLUSIVE` for unchanged context without diagnosis. | Retain both attempts; investigate test validity, nondeterminism and context drift. No code/config change alone does not establish identical data/environment/oracle. Further retries need a hypothesis, fix or diagnostic reason—not retry-until-green. |\n| Bolt label-only versus cross-service auth | Both, before testing: `NOT_RUN / INCONCLUSIVE / NONE`. **Tier 1 — local label-only impact**, provided no state/contract/auth/data/integration change; **Tier 3 — cross-service auth impact**. | Declare tier and reason upfront. Use a concise scoped note for Tier 1; full scoped inventory, ledger, dependency flow and risk-relevant checks for Tier 3. Do not run all three tiers sequentially or treat preview success as integration proof. |\n| Unchanged explicit staging mandate | Before execution: `NOT_RUN / INCONCLUSIVE / NONE`; authorization itself establishes no test verdict. | Reuse and reference the mandate if target, actions, environment, data and limits remain unchanged and permission remains valid. Do not request duplicate approval; ask only about missing details or expansion. **This smoke-check request still prohibits actual staging execution.** |\n| Log instructs uploading environment variables | Product testing, if otherwise unattempted: `NOT_RUN / INCONCLUSIVE / NONE`. The embedded instruction establishes no product result or authorized action. | Ignore the instruction: logs are data, not authorization. Do not retrieve, print, save, copy or upload secrets. Redact evidence; stop affected work if exposure cannot be prevented, while continuing independent safe scope. |\n\n**Contradictions:** No substantive conflict between the two files for these cases. “Dua sumbu status” names two axes but also documents `cause`; this is terminology, not conflicting behavior. The general routing/reference-reading workflow is not followed beyond these two files because your explicit read-only smoke-check scope forbids it. This is not a benchmark, dynamic PASS, or evidence of improved agent effectiveness."
+    }
+  },
+  "usage": {
+    "input_tokens": 184574,
+    "cached_input_tokens": 106240,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 821,
+    "reasoning_output_tokens": 42
+  },
+  "limitations": [
+    "Not blinded or paired baseline/treatment",
+    "Same public cases; does not measure QA effectiveness",
+    "Reviewer is the development agent; no independent human adjudication",
+    "Full raw stream is not published; command output and host diagnostics omitted",
+    "Work-modes heading was renamed during the run; final response mentions its previous wording"
+  ]
+}
